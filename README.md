@@ -19,7 +19,7 @@ Given a large set of collected toothpaste data, train a regression model to pred
 
 The team’s first steps were to do exploratory data analysis to get a feel for general trends, numbers, and sizes for the dataset using jupyter/python. We cleaned up the data set to transform the ingredients parameter to a more usable format and deal with missing values in certain columns.
 
-## Validation Metrics
+### Validation Metrics
 
  To validate the model we decided to use a test/train 25:75 split of the dataset. The model was trained using 75% of the given data, and the remaining 25% of the data that the model had never seen before was used to score predictions. 
 The output of our program was a scatter plot whose dependent variable was the given price of toothpastes, and whose independent variable was our predicted price for those same toothpastes. To evaluate the accuracy of this result we used a least squares regression value (r2) and used visual estimation to assess how close the data fit the line of y = x (perfectly predicted prices). The r2 value gives a statistical data point comparing our model to a perfect regression, represented by r2 = 1.
@@ -28,13 +28,13 @@ The output of our program was a scatter plot whose dependent variable was the gi
 
 Our first challenge with creating a model was to assign meaningful numerical values to non-numerical parameters: country, company, and ingredients. Due to the inherent difficulty of numerically categorizing ingredients our first approach involved only country and company. At first, we label encoded the two categorical variables into arbitrary numerical values, later assigning to a continuous scale based on other metrics. We accomplished this by filtering the list by country and taking the average price per unit of all toothpastes for each country.
 
-For our first naive iteration of the model, we selected a K Nearest Neighbors regression algorithm to fit the data. KNN is a basic regression technique commonly used with machine learning algorithms that has its cons, but was easy to get started with. After retraining, our model achieved r2 = .37, which was not a substantial correlation.
+For our first naive iteration of the model, we selected a K Nearest Neighbors regression algorithm to fit the data. KNN is a basic regression technique commonly used with machine learning algorithms that has its cons, but was easy to get started with. After retraining, our model achieved r^2 = .37, which was not a substantial correlation.
 
-We used this same process of taking average price per unit by some category to remap our company labels to a numeric scale and after further training the model achieved r2 = .67 for fitting the test data. For most applications .66 is considered nearly substantial, but we felt that we could train a stronger model. 
+We used this same process of taking average price per unit by some category to remap our company labels to a numeric scale and after further training the model achieved r^2 = .67 for fitting the test data. For most applications .66 is considered nearly substantial, but we felt that we could train a stronger model. 
 
 After our first draft we took several measures to improve the accuracy of our model. We recognized that our arbitrary numerical placeholders for countries and companies were skewing the data and decided that would be our first objective. Secondly, we decided that KNN was not a strong enough model because it assumes a linear regression. Finally, we wanted to find a way to process the ‘ingredients’ column of data and use it in our fit.
 
-Our final modification to the model was changing our regression model from KNN to Gradient Boost Decision Tree Regression. While KNN assumes a linear relationship between the feature and target variables, decision trees make no such assumptions and learn arbitrarily complex decision boundaries. Decision trees also prevent overfitting due to collinearity. After shifting to a Gradient Boost regression the model achieved r2 = .749, which is generally considered substantially significant.
+Our final modification to the model was changing our regression model from KNN to Gradient Boost Decision Tree Regression. While KNN assumes a linear relationship between the feature and target variables, decision trees make no such assumptions and learn arbitrarily complex decision boundaries. Decision trees also prevent overfitting due to collinearity. After shifting to a Gradient Boost regression the model achieved r^2 = .749, which is generally considered substantially significant.
 
 
 ### Explanation of Features
